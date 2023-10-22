@@ -1,0 +1,62 @@
+\documentclass{amsart}
+\synctex=1
+
+%=================================================================
+% 
+\newcount\DraftStatus  % 0 suppresses notes to selves in text
+\DraftStatus=1   % TODO: set to 0 for final version
+%=================================================================
+
+%=================================================================
+\usepackage{comment}
+\usepackage{gitinfo2}
+%=================================================================
+%
+\includecomment{JournalOnly}  
+\includecomment{ConferenceOnly}  
+\includecomment{TulipStyle}
+%
+%=================================================================
+\input{preamble}
+
+
+%=================================================================
+%
+\begin{document}
+%
+%=================================================================
+%
+\title[Tulip Academy]{CDMC 2020 Task Description Report}%
+
+\author{Rongxin Xu, Xiaoyan Wang}
+\address[A.~1]{School of Business Administration,\\ 
+Hunan University, Changsha 410012, China}%
+\email[A.~1]{rongxin\_xu@163.com}
+
+%\thanks{Thanks to \ldots}%
+\subjclass{Malware detection}%
+\keywords{Random forest, PCA, ...}%
+\date{\gitAuthorDate}%
+
+\begin{abstract}
+Based on the byte sequences collected at the entry points of ELF files as discriminant features and the malware families of the programs as training labels, the participants are required to perform a classification task to predict the malware families of the test samples.  
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\newpage
+%=================================================================
+
+\input{mainbody}
+
+% ----------------------------------------------------------------
+\newpage
+\bibliography{tuliplab,mybib}
+\bibliographystyle{plainnat}
+%=================================================================
+
+\listoftodos
+
+\end{document}
+

@@ -1,0 +1,55 @@
+%=================================================================
+
+\section{Task 1}\label{sec-intro}
+
+\subsection{Problem Analysis}
+\
+This is a typical classification problem, and we can certainly transform it into other problems, such as image detection, but we believe that the classic classification problem has better operability. But we face some difficulties. On the one hand, this is a data set with tens of thousands of samples and thousands of dimensions. At the same time, a large number of attributes are almost filled with 0. These redundant attributes have an adverse effect on the training of the model. On the other hand, the data set is in a severely unbalanced state, which poses a challenge to the accuracy of the classifier.
+
+\subsection{Our work}
+\
+
+We have used some basic but effective methods to solve the above problems, the main methods used are as follows.
+
+
+\begin{description}
+	\item[PCA] Considering the consistency of the training set and the test set, we did not choose a manifold learning method such as T-SNE to reduce dimensionality. We used the PCA method to reduce the dimensionality to the most effective number.
+	\item[SMOTE and Tomek Links] The data set is in a severely unbalanced state, and the simplest and most effective method is to resample. In order to maximize the balance of the negative effects of different resampling methods on the model, we decided to use a comprehensive sampling method: SMOTE + Tomek Links.
+	\item[Random forest] We observed the performance of many classification models using cross-validation, and finally decided to use random forest.
+\end{description}
+
+\section{Task 2} \label{sec-data_exploration}
+
+\subsection{Problem Analysis}
+\
+This is also a classification problem, the difference is that the data type of the attributes of the data set is string type, which is not accepted by machine learning models. We need to find a way to map strings to numbers.
+
+\subsection{Our work}
+\
+
+We also found a simple and easy way to map a string to a number, at the same time, the data set has more serious imbalance than Task 1. In order to provide more information to the model, we also did some additional work.
+
+
+\begin{description}
+	\item[ASCII] Since the length of the string is fixed, we consider converting each letter to its corresponding ASCII value. In this way, we have constructed 2732 attributes. Each attribute has a number corresponding to the letter at the same position in the string.
+	\item[One-Hot Encoding] In order to make full use of the information in the data set, we have one-hot encoding the "cpu" attribute.
+	\item[ensemble learning] We divide the data set into several parts according to the number of samples, the number of samples in each part is at a similar level, and then the corresponding first-level classifiers are trained respectively, and finally the predicted probabilities of the first-level classifiers are integrated .
+\end{description}
+
+%\lstset{language=python}         
+%\begin{lstlisting}[frame=single]  % Start your code-block
+%rf = RandomForestClassifier(random_state = 0)
+%clf = GridSearchCV(rf, param_grid = params, scoring = accuracy_scorer, cv = 10, n_jobs = -1)
+%clf.fit(X_train, y_train)
+%y_pred = clf.predict(X_test)
+%\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
